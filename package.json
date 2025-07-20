@@ -58,5 +58,19 @@
       "esbuild",
       "unrs-resolver"
     ]
-  }
+  },
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kimmerish/VBTF.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/kimmerish/VBTF/issues"
+  },
+  "homepage": "https://github.com/kimmerish/VBTF#readme"
 }
