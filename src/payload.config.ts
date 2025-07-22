@@ -1,40 +1,40 @@
-// storage-adapter-import-placeholder
-import { sqliteAdapter } from '@payloadcms/db-sqlite'
-import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+// src/payload.config.ts
 import path from 'path'
-import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
-import sharp from 'sharp'
+import { buildConfig } from 'payload'
+import { sqliteAdapter } from '@payloadcms/db-sqlite'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 
 import { Users } from './collections/Users'
+import { Pages } from './collections/Pages'
 import { Media } from './collections/Media'
-import { Pages } from './collections/Pages' // ✅ додано
 
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 export default buildConfig({
-  admin: {
-    user: Users.slug,
-    importMap: {
-      baseDir: path.resolve(dirname),
-    },
-  },
-  collections: [Users, Media, Pages], // ✅ додано Pages
-  editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || '',
-  typescript: {
-    outputFile: path.resolve(dirname, 'payload-types.ts'),
-  },
+  serverURL: process.env.SERVER_URL ?? 'http://localhost:3000',
+  secret: process.env.PAYLOAD_SECRET ?? 'change_me',
+
+  editor: lexicalEditor(), // ← Глобальний редактор для всіх richText
+
   db: sqliteAdapter({
     client: {
-      url: process.env.DATABASE_URI || '',
+      url: process.env.DATABASE_URI || process.env.DATABASE_URL || 'file:./vbtf.db',
     },
+    push: false,
+    migrationDir: path.resolve(__dirname, 'migrations'),
   }),
-  sharp,
-  plugins: [
-    payloadCloudPlugin(),
-    // storage-adapter-placeholder
-  ],
+
+  routes: {
+    api: '/api',
+    admin: '/admin',
+  },
+
+  admin: {
+    user: Users.slug,
+    importMap: { baseDir: __dirname },
+  },
+
+  collections: [Users, Pages, Media],
 })
