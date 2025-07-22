@@ -1,0 +1,96 @@
+├── .env
+├── .env.example
+├── .gitignore
+├── .next
+│   ├── app-build-manifest.json
+│   ├── build-manifest.json
+│   ├── package.json
+│   ├── prerender-manifest.json
+│   ├── react-loadable-manifest.json
+│   ├── routes-manifest.json
+│   ├── server
+│   │   ├── app-paths-manifest.json
+│   │   ├── interception-route-rewrite-manifest.js
+│   │   ├── middleware-build-manifest.js
+│   │   ├── middleware-manifest.json
+│   │   ├── middleware-react-loadable-manifest.js
+│   │   ├── next-font-manifest.js
+│   │   ├── next-font-manifest.json
+│   │   ├── pages-manifest.json
+│   │   ├── server-reference-manifest.js
+│   │   └── server-reference-manifest.json
+│   ├── static
+│   │   ├── chunks
+│   │   │   └── polyfills.js
+│   │   └── development
+│   │       ├── _buildManifest.js
+│   │       └── _ssgManifest.js
+│   ├── trace
+│   └── types
+│       ├── cache-life.d.ts
+│       └── package.json
+├── .npmrc
+├── .prettierrc.json
+├── .vscode
+│   ├── extensions.json
+│   ├── launch.json
+│   └── settings.json
+├── .yarnrc
+├── Dockerfile
+├── README.md
+├── docker-compose.yml
+├── eslint.config.mjs
+├── next-env.d.ts
+├── next.config.mjs
+├── package-lock.json
+├── package.json
+├── payload-types.ts
+├── playwright.config.ts
+├── pnpm-lock.yaml
+├── src
+│   ├── app
+│   │   ├── (frontend)
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   └── styles.css
+│   │   ├── (payload)
+│   │   │   ├── admin
+│   │   │   │   ├── [[...segments]]
+│   │   │   │   │   ├── not-found.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── importMap.js
+│   │   │   ├── api
+│   │   │   │   ├── [[...payload]]
+│   │   │   │   │   └── route.ts
+│   │   │   │   ├── graphql
+│   │   │   │   │   └── route.ts
+│   │   │   │   └── graphql-playground
+│   │   │   │       └── route.ts
+│   │   │   ├── custom.scss
+│   │   │   └── layout.tsx
+│   │   ├── [slug]
+│   │   ├── api
+│   │   └── my-route
+│   │       └── route.ts
+│   ├── collections
+│   │   ├── Media.ts
+│   │   ├── Pages.ts
+│   │   └── Users.ts
+│   ├── pages
+│   │   └── api
+│   │       └── [...payload].ts
+│   ├── payload-types.ts
+│   ├── payload.config.ts
+│   └── scripts
+│       └── seed.ts
+├── test.env
+├── tests
+│   ├── e2e
+│   │   └── frontend.e2e.spec.ts
+│   └── int
+│       └── api.int.spec.ts
+├── tree_structure.py
+├── tsconfig.json
+├── vbtf.db
+├── vitest.config.mts
+└── vitest.setup.ts

@@ -1,12 +1,18 @@
-import configPromise from '@payload-config'
+// src/app/my-route/route.ts
+
+import { NextResponse } from 'next/server'
 import { getPayload } from 'payload'
+import payloadConfig from '@/payload.config'
 
-export const GET = async (request: Request) => {
-  const payload = await getPayload({
-    config: configPromise,
+export async function GET() {
+  // Ініціалізуємо Payload CMS із вашою конфігурацією
+  const payload = await getPayload({ config: payloadConfig })
+
+  // Приклад: отримуємо всі документи з колекції "pages"
+  const pages = await payload.find({
+    collection: 'pages',
+    depth: 0,
   })
 
-  return Response.json({
-    message: 'This is an example of a custom route.',
-  })
+  return NextResponse.json(pages)
 }

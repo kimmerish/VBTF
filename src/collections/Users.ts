@@ -4,17 +4,34 @@ import type { CollectionConfig } from 'payload'
 export const Users: CollectionConfig = {
   slug: 'users',
   auth: {
-    tokenExpiration: 60 * 60 * 24, // токен дійсний 24 години
-    verify: true, // вимагати підтвердження email
+    tokenExpiration: 60 * 60 * 24, // 24 години
+    verify: true, // верифікація email
     maxLoginAttempts: 5,
-    lockTime: 60 * 1000, // блокувати на 1 хвилину після невдалих спроб
+    lockTime: 60 * 1000, // 1 хв
+    useAPIKey: false,
   },
   admin: {
-    useAsTitle: 'email', // показувати email у списку юзерів
+    useAsTitle: 'email',
+  },
+
+  access: {
+    create: () => true, // дозволяє гостям створити першого користувача
   },
   fields: [
-    { name: 'name', type: 'text', required: true },
-    { name: 'role', type: 'text', required: true, defaultValue: 'user' },
-    // Поля email і password створюються автоматично завдяки auth
+    {
+      name: 'name',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'role',
+      type: 'select',
+      options: [
+        { label: 'User', value: 'user' },
+        { label: 'Admin', value: 'admin' },
+      ],
+      defaultValue: 'user',
+      required: true,
+    },
   ],
 }
